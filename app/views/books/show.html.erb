@@ -35,6 +35,9 @@
      </div>
      <div id="comment_form">
        <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
+       <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
+         <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3" %>
+       <% end %>
 
     </div>
   </div>
